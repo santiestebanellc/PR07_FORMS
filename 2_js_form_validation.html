@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validació de Formulari</title>
     <style>
+        /* Estilos generales de la página */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -14,6 +15,7 @@
             background-color: #f4f4f4;
             margin: 0;
         }
+        /* Contenedor del formulario */
         .container {
             background: #fff;
             padding: 2rem;
@@ -33,12 +35,14 @@
         label {
             font-weight: bold;
         }
+        /* Grupo de formularios */
         .form-group {
             display: flex;
             flex-direction: column;
             gap: 0.3rem;
             width: 100%;
         }
+        /* Estilos para los inputs y selects */
         input, select {
             width: 100%;
             padding: 0.8rem;
@@ -47,16 +51,19 @@
             font-size: 1rem;
             transition: border-color 0.3s ease-in-out;
         }
+        /* Estilos cuando los campos son válidos o inválidos */
         input:valid, select.valid {
             border-color: #4caf50;
         }
         input:invalid, select.invalid {
             border-color: #e53935;
         }
+        /* Mensajes de error */
         span {
             color: #e53935;
             font-size: 0.9rem;
         }
+        /* Botón de envío */
         button {
             width: 100%;
             background: #007bff;
@@ -110,6 +117,7 @@
         </form>
     </div>
     <script>
+        // Validación del campo de texto
         document.getElementById("text").addEventListener("input", function() {
             let textError = document.getElementById("textError");
 
@@ -128,7 +136,7 @@
             this.reportValidity();
         });
 
-
+        // Validación del correo electrónico
         document.getElementById("email").addEventListener("input", function() {
             if (!this.checkValidity()) {
                 this.setCustomValidity("Format d'email incorrecte.");
@@ -138,6 +146,7 @@
             this.reportValidity();
         });
 
+        // Validación de checkboxes
         document.querySelectorAll("input[name='check']").forEach(checkbox => {
             checkbox.addEventListener("change", function() {
                 let checkboxes = document.querySelectorAll("input[name='check']:checked");
@@ -152,6 +161,7 @@
             });
         });
 
+        // Validación del select múltiple
         document.getElementById("select").addEventListener("change", function() {
             let selectedOptions = Array.from(this.selectedOptions);
             let selectError = document.getElementById("selectError");
@@ -166,6 +176,7 @@
             }
         });
 
+        // Validación en el envío del formulario
         document.getElementById("myForm").addEventListener("submit", function(event) {
             let isValid = true;
             let checkboxes = document.querySelectorAll("input[name='check']:checked");
